@@ -12,6 +12,8 @@ const postListReducer = (currPostList, action) => {
     newPostList = currPostList.filter(
       (post) => post.id !== action.payLoad.postId
     );
+  } else if (action.type === "ADD_POST") {
+    newPostList = [action.payLoad, ...currPostList];
   }
   return newPostList;
 };
@@ -22,7 +24,20 @@ const PostListProvider = ({ children }) => {
     DEFAULT_POST_LIST
   );
 
-  const addPost = () => {};
+  const addPost = (userId, postTitle, postBody, reactions, tags) => {
+    // console.log(userId, postTitle, postBody, reactions, tags);
+    dispatchPostList({
+      type: "ADD_POST",
+      payLoad: {
+        id: postList.length + 1,
+        title: postTitle,
+        body: postBody,
+        reactions: reactions,
+        userId: userId,
+        tags: tags,
+      },
+    });
+  };
 
   const deletePost = (postId) => {
     dispatchPostList({

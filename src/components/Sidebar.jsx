@@ -2,12 +2,12 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
   const handleOnClick = (tabName) => {
     setSelectedTab(tabName);
   };
- 
+
   return (
     <>
       <div
         className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
-        style={{ width: "280px" }}
+        style={{ width: "250px" }}
       >
         <a
           href="/"
@@ -20,14 +20,13 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item" onClick={()=>handleOnClick("Home")}>
+          <li className="nav-item" onClick={() => handleOnClick("Home")}>
             <a
               href="#"
               aria-current="page"
               className={`${
                 selectedTab === "Home" && "active"
               } nav-link text-white`}
-              
             >
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
@@ -35,7 +34,7 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
               Home
             </a>
           </li>
-          <li onClick={()=>handleOnClick("Create Post")}>
+          <li onClick={() => handleOnClick("Create Post")}>
             <a
               href="#"
               className={`${
